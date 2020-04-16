@@ -42,6 +42,8 @@ export default function App() {
 							backgroundColor: '#7289DA',
 							color: '#F1F3FA',
 							width: '8rem',
+							cursor: 'pointer',
+							outline: 'none',
 						}}
 					>
 						Reset
@@ -49,10 +51,8 @@ export default function App() {
 				</form>
 			</div>
 			{charArr.map((fe) => {
-				// console.log(fe);
 				return (
 					<div key={Math.random()}>
-						{/* {console.log(fe.supports)} */}
 						<div
 							style={{
 								padding: '.5rem',
@@ -80,7 +80,6 @@ export default function App() {
 						</div>
 						<div style={{ display: 'flex', margin: '0' }}>
 							{fe.supports.map((friends, id) => {
-								// console.log(friends);
 								return (
 									<div
 										key={id}
@@ -90,8 +89,6 @@ export default function App() {
 											margin: '0 .5rem',
 										}}
 									>
-										{/* <p>{id}</p> */}
-
 										<img
 											src={friends.image_url}
 											alt='lame friend'
@@ -100,7 +97,7 @@ export default function App() {
 											style={{
 												backgroundColor:
 													friends.friendship === 1
-														? 'white'
+														? 'none'
 														: friends.friendship ===
 														  2
 														? 'red'
