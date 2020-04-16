@@ -8,9 +8,7 @@ export default function App() {
 	}
 
 	let arr = localStorage.getItem('memory');
-	console.log(arr);
 	let parsedArr = JSON.parse(arr);
-	console.log(parsedArr);
 
 	const [charArr, setCharArr] = useState(parsedArr);
 
@@ -74,7 +72,10 @@ export default function App() {
 							<img
 								src={fe.image_url}
 								alt='char img'
-								style={{ margin: '0' }}
+								style={{
+									margin: '0',
+									borderRadius: '50%',
+								}}
 							/>
 							<br />
 						</div>
