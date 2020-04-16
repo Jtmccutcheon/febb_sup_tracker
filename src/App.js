@@ -100,13 +100,13 @@ export default function App() {
 														? 'none'
 														: friends.friendship ===
 														  2
-														? 'red'
+														? '#E92D2A'
 														: friends.friendship ===
 														  3
-														? 'yellow'
+														? '#F7D633'
 														: friends.friendship ===
 														  4
-														? 'green'
+														? '#8ED53B'
 														: null,
 												height: '40px',
 												width: '40px',
