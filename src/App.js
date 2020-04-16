@@ -13,11 +13,9 @@ export default function App() {
 	const [charArr, setCharArr] = useState(parsedArr);
 
 	const click = (friend) => {
-		console.log(friend);
 		friend.friendship++;
 		if (friend.friendship > 4) friend.friendship = 1;
 		setCharArr([...charArr], friend);
-		console.log(charArr);
 		localStorage.setItem('memory', JSON.stringify(charArr));
 	};
 
@@ -116,7 +114,9 @@ export default function App() {
 												borderRadius: '50%',
 											}}
 										/>
-										<h6>{friends.name.toUpperCase()}</h6>
+										<h6 style={{ marginTop: '0' }}>
+											{friends.name.toUpperCase()}
+										</h6>
 									</div>
 								);
 							})}
