@@ -789,7 +789,7 @@ const all_data = [
 				image_url: 'images/small/gonzalez1.png',
 			},
 			{
-				name: 'bath',
+				name: 'cecilia',
 				friendship: 1,
 				image_url: 'images/small/cecilia1.png',
 			},

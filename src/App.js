@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, createRef } from 'react'; // https://css-tricks.com/working-with-refs-in-react/
 import data from './data';
 import './index.css';
 
@@ -11,6 +11,7 @@ export default function App() {
 	let parsedArr = JSON.parse(arr);
 
 	const [charArr, setCharArr] = useState(parsedArr);
+	const [text, setText] = useState('');
 
 	const click = (fe, friend) => {
 		for (let i = 0; i < charArr.length; i++) {
@@ -77,6 +78,7 @@ export default function App() {
 							</button>
 						</form>
 					</div>
+					<input></input>
 					<div className='top-border-container'>
 						<div className='border'></div>
 					</div>
