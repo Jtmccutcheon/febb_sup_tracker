@@ -13,13 +13,17 @@ export default function App() {
 	const [charArr, setCharArr] = useState(parsedArr);
 
 	const click = (fe, friend) => {
-		console.log(fe);
-		console.log(friend);
-		let tempVar = friend.name;
-		let tempVar2 = fe.name;
-		// console.log(tempVar);
-		// console.log(tempVar2);
-
+		for (let i = 0; i < charArr.length; i++) {
+			let element = charArr[i];
+			if (element.name === friend.name) {
+				console.log(element);
+				element.supports.map((rel) => {
+					if (rel.name === fe.name) {
+						rel.friendship++;
+					}
+				});
+			}
+		}
 		friend.friendship++;
 		if (friend.friendship > 4) friend.friendship = 0;
 		setCharArr([...charArr], friend);
@@ -77,7 +81,7 @@ export default function App() {
 			<div
 				className='scrollingContainer'
 				style={{
-					maxHeight: '80vh',
+					maxHeight: '78vh',
 					overflow: 'scroll',
 					overflowX: 'hidden',
 				}}

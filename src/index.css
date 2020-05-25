@@ -40,3 +40,30 @@ code {
 	margin: 1rem;
 	position: absolute;
 }
+
+/* width */
+::-webkit-scrollbar {
+	opacity: 0.5;
+	width: 0.5em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	/* box-shadow: inset 0 0 5px grey; */
+	border-radius: 10px;
+	background: #2f3136;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #202225;
+	border-radius: 10px;
+	border-style: outset;
+	border-width: 0.25px;
+	border: black;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}

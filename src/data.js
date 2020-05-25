@@ -54,7 +54,7 @@ const all_data = [
 			{
 				id: 8,
 				friendship: 1,
-				name: 'ceceila',
+				name: 'cecilia',
 				image_url: 'images/small/cecilia1.png',
 			},
 			{
