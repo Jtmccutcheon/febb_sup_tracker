@@ -77,6 +77,9 @@ export default function App() {
 							</button>
 						</form>
 					</div>
+					<div className='top-border-container'>
+						<div className='border'></div>
+					</div>
 				</div>
 			</div>
 			<div
@@ -89,7 +92,13 @@ export default function App() {
 			>
 				{charArr.map((fe, id) => {
 					return (
-						<div key={id}>
+						<div
+							key={id}
+							style={{
+								borderBottom: '1px solid #72767d',
+								margin: '0 4rem 1rem 4rem',
+							}}
+						>
 							<div
 								style={{
 									padding: '.5rem',
@@ -117,7 +126,12 @@ export default function App() {
 								/>
 								<br />
 							</div>
-							<div style={{ display: 'flex', margin: '0' }}>
+							<div
+								style={{
+									display: 'flex',
+									margin: '0',
+								}}
+							>
 								{fe.supports.map((friends, id) => {
 									return (
 										<div
@@ -126,6 +140,8 @@ export default function App() {
 												textAlign: 'center',
 												alignItems: 'center',
 												margin: '0 .5rem',
+
+												// borderBottom: '1px solid blue',
 											}}
 										>
 											<img
