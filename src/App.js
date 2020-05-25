@@ -19,14 +19,14 @@ export default function App() {
 				console.log(element);
 				element.supports.map((rel) => {
 					if (rel.name === fe.name) {
-						rel.friendship++;
 						if (rel.friendship > 4) rel.friendship = 1;
+						rel.friendship++;
 					}
 				});
 			}
 		}
-		friend.friendship++;
 		if (friend.friendship > 4) friend.friendship = 1;
+		friend.friendship++;
 		setCharArr([...charArr], friend);
 		localStorage.setItem('memory', JSON.stringify(charArr));
 	};
