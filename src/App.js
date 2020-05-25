@@ -20,12 +20,13 @@ export default function App() {
 				element.supports.map((rel) => {
 					if (rel.name === fe.name) {
 						rel.friendship++;
+						if (rel.friendship > 4) rel.friendship = 1;
 					}
 				});
 			}
 		}
 		friend.friendship++;
-		if (friend.friendship > 4) friend.friendship = 0;
+		if (friend.friendship > 4) friend.friendship = 1;
 		setCharArr([...charArr], friend);
 		localStorage.setItem('memory', JSON.stringify(charArr));
 	};

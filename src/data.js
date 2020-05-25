@@ -1561,38 +1561,7 @@ const all_data = [
 			},
 		],
 	},
-	{
-		name: 'zeiss',
-		image_url: 'images/big/zeiss.png',
-		supports: [
-			{
-				name: 'elen',
-				friendship: 1,
-				image_url: 'images/small/elen1.png',
-			},
-			{
-				name: 'sin',
-				friendship: 1,
-				image_url: 'images/small/sin1.png',
-			},
 
-			{
-				name: 'bartre',
-				friendship: 1,
-				image_url: 'images/small/bartre1.png',
-			},
-			{
-				name: 'milady',
-				friendship: 1,
-				image_url: 'images/small/milady1.png',
-			},
-			{
-				name: 'karel',
-				friendship: 1,
-				image_url: 'images/small/karel1.png',
-			},
-		],
-	},
 	{
 		name: 'zeiss',
 		image_url: 'images/big/zeiss.png',
