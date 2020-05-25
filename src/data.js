@@ -494,37 +494,6 @@ const all_data = [
 		],
 	},
 	{
-		name: 'clarine',
-		image_url: 'images/big/clarine.png',
-		supports: [
-			{
-				name: 'lance',
-				friendship: 1,
-				image_url: 'images/small/lance1.png',
-			},
-			{
-				name: 'dieck',
-				friendship: 1,
-				image_url: 'images/small/dieck1.png',
-			},
-			{
-				name: 'rutger',
-				friendship: 1,
-				image_url: 'images/small/rutger1.png',
-			},
-			{
-				name: 'dorothy',
-				friendship: 1,
-				image_url: 'images/small/dorothy1.png',
-			},
-			{
-				name: 'klein',
-				friendship: 1,
-				image_url: 'images/small/klein1.png',
-			},
-		],
-	},
-	{
 		name: 'rutger',
 		image_url: 'images/big/rutger.png',
 		supports: [
