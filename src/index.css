@@ -13,3 +13,30 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
 }
+
+.dot {
+	height: 20px;
+	width: 20px;
+	background-color: #e92d2a;
+	border-radius: 50%;
+	display: inline-block;
+	margin-left: 0.25rem;
+}
+
+.dot:nth-child(4) {
+	background-color: #f7d633;
+}
+
+.dot:nth-child(6) {
+	background-color: #8ed53b;
+}
+
+.key {
+	display: flex;
+	width: 11rem;
+	flex-wrap: wrap;
+	align-items: center;
+	font-size: 12px;
+	margin: 1rem;
+	position: absolute;
+}
