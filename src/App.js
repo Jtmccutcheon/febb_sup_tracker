@@ -78,7 +78,7 @@ export default function App() {
 							</button>
 						</form>
 					</div>
-					<input></input>
+					{/* <input></input> */}
 					<div className='top-border-container'>
 						<div className='border'></div>
 					</div>
