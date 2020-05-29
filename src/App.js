@@ -11,8 +11,9 @@ export default function App() {
 	let parsedArr = JSON.parse(arr);
 
 	const [charArr, setCharArr] = useState(parsedArr);
-	const [searched, setSearched] = useState([]);
-	const [text, setText] = useState('');
+
+	const [text, setText] = useState(''); // this is a nightmare
+
 
 	const userInput = (e) => {
 		setText(e.target.value);
