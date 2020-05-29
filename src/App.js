@@ -11,7 +11,7 @@ export default function App() {
 	let parsedArr = JSON.parse(arr);
 
 	const [charArr, setCharArr] = useState(parsedArr);
-	const [text, setText] = useState('');
+	const [text, setText] = useState(''); // this is a nightmare
 
 	const click = (fe, friend) => {
 		for (let i = 0; i < charArr.length; i++) {
