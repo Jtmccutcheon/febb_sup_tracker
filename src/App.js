@@ -19,7 +19,6 @@ export default function App() {
 
 
 
-	console.log(searched);
 	const click = (fe, friend) => {
 		for (let i = 0; i < charArr.length; i++) {
 			let element = charArr[i];
@@ -88,11 +87,11 @@ export default function App() {
 							</button>
 // 						</form>
 					</div>
-					<input
-						value={text.text}
-						onChange={userInput}
-						name='text'
-					></input>
+// 					<input
+// 						value={text.text}
+// 						onChange={userInput}
+// 						name='text'
+// 					></input>
 					<div className='top-border-container'>
 						<div className='border'></div>
 					</div>
