@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // https://css-tricks.com/working-with-refs-in-react/
+import React, { useState, createRef } from 'react'; // https://css-tricks.com/working-with-refs-in-react/
 import data from './data';
 import './index.css';
 
@@ -11,19 +11,13 @@ export default function App() {
 	let parsedArr = JSON.parse(arr);
 
 	const [charArr, setCharArr] = useState(parsedArr);
-
 	const [text, setText] = useState(''); // this is a nightmare
-
-
-	
-
-
 
 	const click = (fe, friend) => {
 		for (let i = 0; i < charArr.length; i++) {
 			let element = charArr[i];
 			if (element.name === friend.name) {
-				// console.log(element);
+				console.log(element);
 				element.supports.map((rel) => {
 					if (rel.name === fe.name) {
 						if (rel.friendship > 4) rel.friendship = 1;
@@ -40,9 +34,7 @@ export default function App() {
 
 	const reset = () => {
 		localStorage.clear();
-		setCharArr(parsedArr)
-		// let temp = [...charArr];
-		// setCharArr(temp);
+		setCharArr(charArr);
 	};
 
 	return (
@@ -69,9 +61,8 @@ export default function App() {
 					<div>
 						<h2>Fire Emblem</h2>
 						<h4>Support Tracker for The Binding Blade</h4>
-// 						<form onSubmit={reset}>
+						<form onSubmit={reset}>
 							<button
-								onClick={reset}
 								style={{
 									padding: '.5rem 1rem',
 									borderRadius: '15px',
@@ -85,13 +76,9 @@ export default function App() {
 							>
 								Reset
 							</button>
-// 						</form>
+						</form>
 					</div>
-// 					<input
-// 						value={text.text}
-// 						onChange={userInput}
-// 						name='text'
-// 					></input>
+					{/* <input></input> */}
 					<div className='top-border-container'>
 						<div className='border'></div>
 					</div>
