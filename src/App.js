@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react'; // https://css-tricks.com/working-with-refs-in-react/
+import React, { useState, useEffect } from 'react'; // https://css-tricks.com/working-with-refs-in-react/
 import data from './data';
 import './index.css';
 
@@ -11,13 +11,40 @@ export default function App() {
 	let parsedArr = JSON.parse(arr);
 
 	const [charArr, setCharArr] = useState(parsedArr);
+	const [searched, setSearched] = useState([]);
 	const [text, setText] = useState('');
 
+	const userInput = (e) => {
+		setText(e.target.value);
+		// console.log(text);
+		filtered(e.target.value);
+		// const lowercasedValue = text.toLowerCase().trim();
+		// let temp = [...charArr];
+		// if (lowercasedValue === '') setCharArr(temp);
+		// else {
+		// }
+	};
+
+	const filtered = (value) => {
+		console.log(value);
+		let temp = [...charArr];
+		// let temp2 = [...charArr];
+		const lowercasedValue = value.toLowerCase().trim();
+		if (lowercasedValue === '') setCharArr(parsedArr);
+		else {
+			const results = temp.filter((person) =>
+				person.name.toLowerCase().startsWith(text),
+			);
+			setSearched(results);
+		}
+	};
+
+	console.log(searched);
 	const click = (fe, friend) => {
 		for (let i = 0; i < charArr.length; i++) {
 			let element = charArr[i];
 			if (element.name === friend.name) {
-				console.log(element);
+				// console.log(element);
 				element.supports.map((rel) => {
 					if (rel.name === fe.name) {
 						if (rel.friendship > 4) rel.friendship = 1;
@@ -34,7 +61,8 @@ export default function App() {
 
 	const reset = () => {
 		localStorage.clear();
-		setCharArr(charArr);
+		// let temp = [...charArr];
+		// setCharArr(temp);
 	};
 
 	return (
@@ -63,6 +91,7 @@ export default function App() {
 						<h4>Support Tracker for The Binding Blade</h4>
 						<form onSubmit={reset}>
 							<button
+								onClick={reset}
 								style={{
 									padding: '.5rem 1rem',
 									borderRadius: '15px',
@@ -78,7 +107,119 @@ export default function App() {
 							</button>
 						</form>
 					</div>
-					{/* <input></input> */}
+					<input
+						value={text.text}
+						onChange={userInput}
+						name='text'
+					></input>
+					{searched
+						? searched.map((fe, id) => {
+								return (
+									<div
+										key={id}
+										style={{
+											borderBottom: '1px solid #72767d',
+											margin: '0 4rem 1rem 4rem',
+										}}
+									>
+										<div
+											style={{
+												padding: '.5rem',
+												margin: '.5rem',
+												display: 'flex',
+												flexDirection: 'column-reverse',
+												width: '5rem',
+												alignItems: 'center',
+											}}
+										>
+											<h4
+												style={{
+													margin: '0',
+												}}
+											>
+												<br />
+												{fe.name.toUpperCase()}
+											</h4>
+											<img
+												src={fe.image_url}
+												alt='char img'
+												style={{
+													margin: '0',
+												}}
+											/>
+											<br />
+										</div>
+										<div
+											style={{
+												display: 'flex',
+												margin: '0',
+											}}
+										>
+											{fe.supports.map((friends, id) => {
+												return (
+													<div
+														key={id}
+														style={{
+															textAlign: 'center',
+															alignItems:
+																'center',
+															margin: '0 .5rem',
+
+															// borderBottom: '1px solid blue',
+														}}
+													>
+														<img
+															src={
+																friends.image_url
+															}
+															alt='lame friend'
+															id={id}
+															onClick={() =>
+																click(
+																	fe,
+																	friends,
+																)
+															}
+															style={{
+																backgroundColor:
+																	friends.friendship ===
+																	1
+																		? 'none'
+																		: friends.friendship ===
+																		  2
+																		? '#E92D2A'
+																		: friends.friendship ===
+																		  3
+																		? '#F7D633'
+																		: friends.friendship ===
+																		  4
+																		? '#8ED53B'
+																		: null,
+																height: '40px',
+																width: '40px',
+																cursor:
+																	'pointer',
+																padding:
+																	'.5rem',
+																borderRadius:
+																	'50%',
+															}}
+														/>
+														<h6
+															style={{
+																marginTop: '0',
+															}}
+														>
+															{friends.name.toUpperCase()}
+														</h6>
+													</div>
+												);
+											})}
+										</div>
+									</div>
+								);
+						  })
+						: null}
 					<div className='top-border-container'>
 						<div className='border'></div>
 					</div>
