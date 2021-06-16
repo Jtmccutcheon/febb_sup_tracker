@@ -14,10 +14,6 @@ export default function App() {
 		localStorage.setItem('save 3', JSON.stringify(data));
 	}
 
-	// let arr = localStorage.getItem('save 1');
-	// let parsedArr = JSON.parse(arr);
-
-	// const [charArr, setCharArr] = useState(parsedArr);
 	const [searchArr, setSearchArr] = useState([]);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [currentSaveSlot, setCurrentSaveSlot] = useState('save 1');
@@ -47,16 +43,8 @@ export default function App() {
 		setCharArr([]);
 		setCurrentSaveSlot(e.target.value);
 		let saveState = getSave(e.target.value);
-		// console.log(saveState);
-		// let saveState = localStorage.getItem(currentSaveSlot);
-		// let parsed = JSON.parse(saveState);
-		// console.log(parsed);
-		// setCharArr(parsed);
 		setCharArr(JSON.parse(saveState));
 	};
-
-	console.log(currentSaveSlot);
-	console.log(JSON.stringify(charArr));
 
 	const click = (fe, friend) => {
 		for (let i = 0; i < charArr.length; i++) {
