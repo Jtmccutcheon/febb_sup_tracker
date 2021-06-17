@@ -53,8 +53,9 @@ export default function App() {
 				element.supports.map((rel) => {
 					if (rel.name === fe.name) {
 						if (rel.friendship > 4) rel.friendship = 1;
-						rel.friendship++;
+						return rel.friendship++;
 					}
+					return null;
 				});
 			}
 		}
@@ -163,7 +164,6 @@ export default function App() {
 							<option value='save 3'>save 3</option>
 						</select>
 					</div>
-					{currentSaveSlot}
 					<div
 						className='searchbox'
 						style={{
