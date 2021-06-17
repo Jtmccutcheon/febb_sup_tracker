@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import data from './data';
 import './index.css';
@@ -14,13 +14,20 @@ export default function App() {
 		localStorage.setItem('save 3', JSON.stringify(data));
 	}
 
+	if (!localStorage.getItem('current-save')) {
+		localStorage.setItem('current-save', 'save 1');
+	}
+
 	const [searchArr, setSearchArr] = useState([]);
 	const [searchTerm, setSearchTerm] = useState('');
-	const [currentSaveSlot, setCurrentSaveSlot] = useState('save 1');
-
+	const [currentSaveSlot, setCurrentSaveSlot] = useState(
+		localStorage.getItem('current-save'),
+	);
 	const [charArr, setCharArr] = useState(
 		JSON.parse(localStorage.getItem(currentSaveSlot)),
 	);
+	const searchRef = useRef(null);
+
 	const safeSearch = (text, arr) => {
 		if (text.length === 0 || text.length === 1) return [];
 		return arr.filter((i) => i.name.includes(text));
@@ -42,6 +49,7 @@ export default function App() {
 	const changeSave = (e) => {
 		setCharArr([]);
 		setCurrentSaveSlot(e.target.value);
+		localStorage.setItem('current-save', e.target.value);
 		let saveState = getSave(e.target.value);
 		setCharArr(JSON.parse(saveState));
 	};
@@ -66,10 +74,32 @@ export default function App() {
 	};
 
 	const reset = () => {
-		localStorage.removeItem(currentSaveSlot);
-		let temp = [...charArr];
-		setCharArr(temp);
+		localStorage.setItem(currentSaveSlot, JSON.stringify(data));
+		setCharArr(JSON.parse(localStorage.getItem(currentSaveSlot)));
 	};
+
+	useEffect(() => {
+		const handleOutsideClick = (e) => {
+			if (searchRef.current !== null) {
+				if (searchRef.current.contains(e.target)) {
+					return;
+				} else {
+					setSearchArr([]);
+					setSearchTerm('');
+				}
+			}
+		};
+		if (searchArr.length) {
+			document.addEventListener('mousedown', handleOutsideClick, false);
+		}
+		return () => {
+			document.removeEventListener(
+				'mousedown',
+				handleOutsideClick,
+				false,
+			);
+		};
+	}, [searchArr.length]);
 
 	return (
 		<div className='App'>
@@ -95,23 +125,23 @@ export default function App() {
 					<div>
 						<h2>Fire Emblem</h2>
 						<h4>Support Tracker for The Binding Blade</h4>
-						<form onSubmit={reset}>
-							<button
-								style={{
-									padding: '.5rem 1rem',
-									borderRadius: '15px',
-									borderStyle: 'none',
-									backgroundColor: '#7289DA',
-									color: '#F1F3FA',
-									width: '8rem',
-									cursor: 'pointer',
-									outline: 'none',
-								}}
-								onClick={reset}
-							>
-								Reset
-							</button>
-						</form>
+						{/* <form> */}
+						<button
+							style={{
+								padding: '.5rem 1rem',
+								borderRadius: '15px',
+								borderStyle: 'none',
+								backgroundColor: '#7289DA',
+								color: '#F1F3FA',
+								width: '8rem',
+								cursor: 'pointer',
+								outline: 'none',
+							}}
+							onClick={reset}
+						>
+							Reset
+						</button>
+						{/* </form> */}
 					</div>
 					<div
 						style={{
@@ -165,6 +195,7 @@ export default function App() {
 						</select>
 					</div>
 					<div
+						ref={searchRef}
 						className='searchbox'
 						style={{
 							position: 'absolute',
